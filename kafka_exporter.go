@@ -491,10 +491,10 @@ func main() {
 	kingpin.Flag("zookeeper.server", "Address (hosts) of zookeeper server.").Default("localhost:2181").StringsVar(&opts.uriZookeeper)
 	kingpin.Flag("kafka.labels", "Kafka cluster name").Default("").StringVar(&opts.labels)
 	kingpin.Flag("refresh.metadata", "Metadata refresh interval").Default("30s").StringVar(&opts.metadataRefreshInterval)
-
 	plog.AddFlags(kingpin.CommandLine)
 	kingpin.Version(version.Print("kafka_exporter"))
 	kingpin.HelpFlag.Short('h')
+	kingpin.CommandLine.DefaultEnvars()
 	kingpin.Parse()
 
 	plog.Infoln("Starting kafka_exporter", version.Info())
