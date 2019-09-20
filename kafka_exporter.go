@@ -15,7 +15,7 @@ import (
 	"time"
 
 	"github.com/Shopify/sarama"
-	kazoo "github.com/krallistic/kazoo-go"
+	"github.com/krallistic/kazoo-go"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	plog "github.com/prometheus/common/log"
