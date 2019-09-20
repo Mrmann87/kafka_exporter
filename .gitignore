@@ -23,3 +23,6 @@ kafka_exporter
 
 # Test configuration
 test/
+
+# OSX Directory attributes
+.DS_Store
