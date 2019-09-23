@@ -19,6 +19,9 @@ RUN make
 ####################################
 FROM alpine:3.10 as binary
 
+# Install runtime packages
+RUN apk --no-cache add tzdata bash ca-certificates
+
 COPY --from=builder /opt/src/kafka_exporter /bin/kafka_exporter
 
 EXPOSE     9090
