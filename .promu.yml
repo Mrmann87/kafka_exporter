@@ -1,7 +1,7 @@
 repository:
     path: github.com/danielqsj/kafka_exporter
 build:
-    flags: -a -mod=vendor -tags netgo
+    flags: -o kafka_exporter -a -mod=vendor -tags netgo
     ldflags: |
         -X {{repoPath}}/vendor/github.com/prometheus/common/version.Version={{.Version}}
         -X {{repoPath}}/vendor/github.com/prometheus/common/version.Revision={{.Revision}}
