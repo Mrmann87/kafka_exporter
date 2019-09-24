@@ -2,6 +2,7 @@ package main
 
 import (
 	"crypto/tls"
+	"crypto/x509"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -137,8 +138,12 @@ func NewExporter(opts kafkaOpts, topicFilter string, groupFilter string) (*Expor
 
 	if opts.useTLS {
 		config.Net.TLS.Enable = true
-
+		systemCerts, err := x509.SystemCertPool()
+		if err != nil {
+			return nil, err
+		}
 		config.Net.TLS.Config = &tls.Config{
+			RootCAs:            systemCerts,
 			InsecureSkipVerify: opts.tlsInsecureSkipTLSVerify,
 		}
 
